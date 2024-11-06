@@ -3,6 +3,7 @@ package com.nkmory.todolist;
 public class ToDo {
     private String title;
     private boolean completed;
+    
 
     // Constructor
     public ToDo(String title, boolean completed) {

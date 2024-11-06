@@ -12,9 +12,9 @@ public class ToDoController {
     private List<ToDo> todoList = new ArrayList<>(); // In-memory storage for demo
 
     // GET /todos - Retrieve the list of todos
-    @GetMapping
-    public List<ToDo> getToDos() {
-        return todoList; // Return the list of todos
+    @GetMapping("/todos")
+    public List<ToDo> getAllTodos() {
+        return todoList; // Assuming `todoList` contains all tasks
     }
 
     // POST /todos - Create a new todo
