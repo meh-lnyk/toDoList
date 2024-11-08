@@ -1,24 +1,31 @@
+package com.nkmory.todolist.controllers;
+
 import com.nkmory.todolist.models.ToDo;
+import com.nkmory.todolist.services.ToDoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/todos")
 public class ToDoController {
 
-    private List<ToDo> todoList = new ArrayList<>(); // In-memory storage for demo
+    private final ToDoService todoService;
 
-    // GET /todos - Retrieve the list of todos
-    @GetMapping
-    public List<ToDo> getAllTodos() {
-        return todoList; // Assuming `todoList` contains all tasks
+    // Inject the ToDoService into the controller
+    @Autowired
+    public ToDoController(ToDoService todoService) {
+        this.todoService = todoService;
     }
 
-    // POST /todos - Create a new todo
+    @GetMapping
+    public List<ToDo> getAllTodos() {
+        return todoService.getAllTodos();
+    }
+
     @PostMapping
     public ToDo createToDo(@RequestBody ToDo todo) {
-        todoList.add(todo); // Add the new todo to the list
-        return todo; // Return the created todo
+        return todoService.createToDo(todo);
     }
 }

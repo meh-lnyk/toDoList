@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.nkmory.todolist.TodolistApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-08T07:16:55" hostname="LAPTOP-3CO4J3M2" time="1.113">
+<testsuite name="com.nkmory.todolist.TodolistApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-08T08:02:12" hostname="LAPTOP-3CO4J3M2" time="1.099">
   <properties/>
-  <testcase name="contextLoads()" classname="com.nkmory.todolist.TodolistApplicationTests" time="1.113"/>
-  <system-out><![CDATA[10:16:53.757 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.nkmory.todolist.TodolistApplicationTests]: TodolistApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-10:16:53.899 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.nkmory.todolist.TodolistApplication for test class com.nkmory.todolist.TodolistApplicationTests
+  <testcase name="contextLoads()" classname="com.nkmory.todolist.TodolistApplicationTests" time="1.099"/>
+  <system-out><![CDATA[11:02:09.628 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.nkmory.todolist.TodolistApplicationTests]: TodolistApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:02:09.838 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.nkmory.todolist.TodolistApplication for test class com.nkmory.todolist.TodolistApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,10 +14,10 @@
 
  :: Spring Boot ::                (v3.3.5)
 
-2024-11-08T10:16:54.355+03:00  INFO 15508 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : Starting TodolistApplicationTests using Java 17.0.13 with PID 15508 (started by Nika Kurafeeva in C:\Users\Nika Kurafeeva\Documents\GitHub\toDoList)
-2024-11-08T10:16:54.357+03:00  INFO 15508 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : No active profile set, falling back to 1 default profile: "default"
-2024-11-08T10:16:55.435+03:00  INFO 15508 --- [todolist] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2024-11-08T10:16:55.781+03:00  INFO 15508 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : Started TodolistApplicationTests in 1.713 seconds (process running for 3.401)
+2024-11-08T11:02:10.363+03:00  INFO 28984 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : Starting TodolistApplicationTests using Java 17.0.13 with PID 28984 (started by Nika Kurafeeva in C:\Users\Nika Kurafeeva\Documents\GitHub\toDoList)
+2024-11-08T11:02:10.364+03:00  INFO 28984 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2024-11-08T11:02:12.131+03:00  INFO 28984 --- [todolist] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-11-08T11:02:12.558+03:00  INFO 28984 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : Started TodolistApplicationTests in 2.505 seconds (process running for 4.137)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
