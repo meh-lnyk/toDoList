@@ -57,4 +57,4 @@ function addTask() {
 }
 
 // Call loadTodos() initially to load the tasks when the page loads
-window.onload = loadTodos();
+window.onload = fetchTasks();
