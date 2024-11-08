@@ -1,9 +1,10 @@
-package com.nkmory.todolist;
+package com.nkmory.todolist.models;
 
 public class ToDo {
     private String title;
     private boolean completed;
     
+    public ToDo(){}
 
     // Constructor
     public ToDo(String title, boolean completed) {

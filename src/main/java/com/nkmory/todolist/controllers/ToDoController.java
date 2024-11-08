@@ -1,7 +1,5 @@
-package com.nkmory.todolist;
-
+import com.nkmory.todolist.models.ToDo;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,7 @@ public class ToDoController {
     private List<ToDo> todoList = new ArrayList<>(); // In-memory storage for demo
 
     // GET /todos - Retrieve the list of todos
-    @GetMapping("/todos")
+    @GetMapping
     public List<ToDo> getAllTodos() {
         return todoList; // Assuming `todoList` contains all tasks
     }
