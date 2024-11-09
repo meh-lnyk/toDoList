@@ -13,7 +13,7 @@ async function fetchTasks() {
     }
 }
 
-function loadTodos(todos) {
+function loadTodos(todos = []) {
     const taskList = document.getElementById('taskList');
     taskList.innerHTML = ''; // Clear the list
 
@@ -46,10 +46,11 @@ function addTask() {
         return response.json();
     })
     .then(data => {
-        const taskList = document.getElementById('task-list');
+        const taskList = document.getElementById('taskList');
         const taskItem = document.createElement('li');
         taskItem.textContent = data.title;
-        taskList.appendChild(taskItem);
+        taskList.appendChild(taskItem);  
+        return fetchTasks();
     })
     .catch(error => {
         console.error('Error:', error)
@@ -57,4 +58,6 @@ function addTask() {
 }
 
 // Call loadTodos() initially to load the tasks when the page loads
-window.onload = fetchTasks();
+window.onload = function() {
+    fetchTasks()
+};
