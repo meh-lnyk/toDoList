@@ -4,6 +4,8 @@ package com.nkmory.todolist.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +33,8 @@ public class ToDoController {
     }
 
     @PostMapping
-    public ToDo createToDo(@RequestBody ToDo todo) {
-        return todoService.createToDo(todo);
+    public ResponseEntity<ToDo> createToDo(@RequestBody ToDo toDo){
+        ToDo savedToDo = ToDoService.createToDo(toDo);
+        return new ResponseEntity<>(savedToDo, HttpStatus.CREATED);
     }
 }

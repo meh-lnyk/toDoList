@@ -1,4 +1,4 @@
-async function fetchTasks() {
+async function fetchToDos() {
     try {
         const response = await fetch('/todos', { method: 'GET' });
         if (response.ok) {
@@ -6,28 +6,28 @@ async function fetchTasks() {
             console.log("Fetched todos:", todos); // Log to inspect the data structure
             loadTodos(todos); // Pass the todos to loadTodos for rendering
         } else {
-            console.error('Failed to fetch tasks');
+            console.error('Failed to fetch todos');
         }
     } catch (error) {
-        console.error('Error loading tasks:', error);
+        console.error('Error loading todos:', error);
     }
 }
 
 function loadTodos(todos = []) {
-    const taskList = document.getElementById('taskList');
-    taskList.innerHTML = ''; // Clear the list
+    const todoList = document.getElementById('todoList');
+    todoList.innerHTML = ''; // Clear the list
 
     todos.forEach(todo => {
         const listItem = document.createElement('li');
-        listItem.textContent = todo.title; // Display the task title
-        taskList.appendChild(listItem);
+        listItem.textContent = todo.title; // Display the todo title
+        todoList.appendChild(listItem);
     });
 }
 
-function addTask() {
-    const taskTitle = document.getElementById('taskTitle').value;
+function addToDo() {
+    const todoTitle = document.getElementById('todoTitle').value;
 
-    if (taskTitle === '') {
+    if (todoTitle === '') {
         console('The title is empty');
         return;
     }
@@ -37,27 +37,30 @@ function addTask() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ title: taskTitle })
+        body: JSON.stringify({
+            title: todoTitle, 
+            completed: false
+        })
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Failed to add task.')
+            throw new Error('Failed to add todo.')
         }
         return response.json();
     })
     .then(data => {
-        const taskList = document.getElementById('taskList');
-        const taskItem = document.createElement('li');
-        taskItem.textContent = data.title;
-        taskList.appendChild(taskItem);  
-        return fetchTasks();
+        const todoList = document.getElementById('todoList');
+        const todoItem = document.createElement('li');
+        todoItem.textContent = data.title;
+        todoList.appendChild(todoItem);  
+        return fetchToDos();
     })
     .catch(error => {
         console.error('Error:', error)
     });
 }
 
-// Call loadTodos() initially to load the tasks when the page loads
+// Call loadTodos() initially to load the todos when the page loads
 window.onload = function() {
-    fetchTasks()
+    fetchToDos()
 };
