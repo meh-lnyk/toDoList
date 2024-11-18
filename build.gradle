@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.5'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'org.liquibase.gradle' version '2.1.1'
 }
 
 group = 'com.nkmory'
@@ -26,13 +27,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.flywaydb:flyway-core'
-	implementation 'org.flywaydb:flyway-core:9.5.1'
-	implementation 'org.flywaydb:flyway-mysql'
+    implementation 'org.liquibase:liquibase-core:4.27.0'
 	implementation 'mysql:mysql-connector-java:8.0.33'
+	implementation 'org.hibernate:hibernate-core:6.5.3.Final'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'mysql:mysql-connector-java:8.0.33'
-	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -40,11 +38,6 @@ dependencies {
 	// testImplementation 'org.springframework.security:spring-security-test'
 }
 
-// configurations.all {
-// 	resolutionStrategy {
-//         force 'org.flywaydb:flyway-core:9.5.1'
-// 	}
-// }
 
 tasks.named('test') {
 	useJUnitPlatform()
