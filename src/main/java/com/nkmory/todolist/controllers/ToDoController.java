@@ -1,19 +1,19 @@
 //Even though it shows an error do NOT delete it
 package com.nkmory.todolist.controllers;
 
+import com.nkmory.todolist.models.ToDo;
+import com.nkmory.todolist.services.ToDoService;
+
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.nkmory.todolist.models.ToDo;
-import com.nkmory.todolist.services.ToDoService;
 
 @RestController
 @RequestMapping("/todos")
@@ -28,13 +28,14 @@ public class ToDoController {
     }
 
     @GetMapping
-    public List<ToDo> getAllTodos() {
-        return todoService.getAllTodos();
+    public List<ToDo> getToDos() {
+        return todoService.getToDos();
     }
 
     @PostMapping
-    public ResponseEntity<ToDo> createToDo(@RequestBody ToDo toDo){
-        ToDo savedToDo = ToDoService.createToDo(toDo);
-        return new ResponseEntity<>(savedToDo, HttpStatus.CREATED);
+    public ResponseEntity<ToDo> createToDo(@RequestBody Map<String, String> request) {
+        String title = request.get("title");
+        ToDo todo = todoService.createToDo(title);
+        return ResponseEntity.ok(todo);
     }
 }

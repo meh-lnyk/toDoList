@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: db/changelog/20241115_initial_schema.yaml
+  - include:
+      file: db/changelog/20241118_adding_new_task.yaml

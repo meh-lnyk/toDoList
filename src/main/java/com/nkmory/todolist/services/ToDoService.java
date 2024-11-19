@@ -1,26 +1,26 @@
 package com.nkmory.todolist.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.nkmory.todolist.models.ToDo;
+import com.nkmory.todolist.repositories.ToDoRepository;
+
+import java.util.List;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class ToDoService {
 
-    private static List<ToDo> todoList = new ArrayList<>(); // In-memory storage for demo
-    
-        // Retrieve all todos
-        public List<ToDo> getAllTodos() {
-            return todoList;
-        }
-    
-        // Create a new todo
-        public static ToDo createToDo(ToDo todo) {
-            todoList.add(todo);
-        return todo;
+    @Autowired
+    private ToDoRepository todoRepository;
+
+    public ToDo createToDo(String title) {
+        ToDo todo = new ToDo();
+        todo.setTitle(title);
+        todo.setCompleted(false);
+        return todoRepository.save(todo);
     }
-    
+
+    public List<ToDo> getToDos() {
+        return todoRepository.findAll();
+    }
 }

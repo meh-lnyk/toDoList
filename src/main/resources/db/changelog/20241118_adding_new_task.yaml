@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: adding_new_task
+      author: nkmory
+      changes:
+        - insert:
+            tableName: todolist
+            columns:
+              - column:
+                  name: title
+                  value: 'placeholder'
+              - column:
+                  name: is_completed
+                  valueBoolean: false

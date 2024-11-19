@@ -28,7 +28,7 @@ function addToDo() {
     const todoTitle = document.getElementById('todoTitle').value;
 
     if (todoTitle === '') {
-        console('The title is empty');
+        console.log('The title is empty');
         return;
     }
 
@@ -37,10 +37,7 @@ function addToDo() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            title: todoTitle, 
-            completed: false
-        })
+        body: JSON.stringify({ title: todoTitle })
     })
     .then(response => {
         if (!response.ok) {

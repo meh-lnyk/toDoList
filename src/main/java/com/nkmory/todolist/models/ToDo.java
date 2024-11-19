@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="TODOS")
+@Table(name="todolist")
 public class ToDo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

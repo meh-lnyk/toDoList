@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nkmory.todolist.models.ToDo;
 
-@Repository  // Marks this interface as a Spring Data Repository
+@Repository
 public interface ToDoRepository extends JpaRepository<ToDo, Long> {
     
 }
