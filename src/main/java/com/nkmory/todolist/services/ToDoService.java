@@ -4,6 +4,8 @@ import com.nkmory.todolist.models.ToDo;
 import com.nkmory.todolist.repositories.ToDoRepository;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,5 +28,13 @@ public class ToDoService {
 
     public void deleteToDoById(Long id) {
         todoRepository.deleteById(id);
+    }
+
+    public Optional<ToDo> getToDoById(Long id) {
+        return todoRepository.findById(id);
+    }
+
+    public ToDo saveToDo(ToDo todo) {
+        return todoRepository.save(todo);
     }
 }

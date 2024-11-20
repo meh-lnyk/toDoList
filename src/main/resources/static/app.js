@@ -1,4 +1,5 @@
 async function fetchToDos() {
+    console.log('fetchToDos() is called')
     try {
         const response = await fetch('/todos', { method: 'GET' });
         if (response.ok) {
@@ -47,6 +48,8 @@ function addToDo() {
 }
 
 function loadTodos(todos = []) {
+    console.log('loadTodos() is called');
+    console.log(todos);
     const todoList = document.getElementById('todoList');
     todoList.innerHTML = ''; // Clear the list
 
@@ -59,7 +62,14 @@ function loadTodos(todos = []) {
         deleteToDoButton.classList.add('delete-td-btn'); // For styling
         deleteToDoButton.onclick = () => deleteToDo(todo.id);
 
+        const todoCompletionCheckbox = document.createElement('input');
+        todoCompletionCheckbox.type = 'checkbox';
+        todoCompletionCheckbox.checked = todo.isCompleted;
+        todoCompletionCheckbox.addEventListener('change', () => toggleCompletion(todo.id, todoCompletionCheckbox.checked));
+
+
         todoItem.appendChild(deleteToDoButton);
+        todoItem.appendChild(todoCompletionCheckbox);
         todoList.appendChild(todoItem);
     });
 }
@@ -77,6 +87,23 @@ function deleteToDo(id) {
     .catch(error => {
         console.error('Error:', error);
     })
+}
+
+function toggleCompletion(id, isCompleted) {
+    console.log('toggleCompleted() is called')
+    fetch(`http://localhost:8080/todos/${id}/complete?completed=${isCompleted}`, {
+        method: 'PATCH'
+    })
+    .then(response => {
+        if (response.ok) {
+            fetchToDos(); // Refresh the to-dos after successful update
+        } else {
+            throw new Error('Failed to update completion status.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 // Call fetchToDos() initially to load the todos when the page loads

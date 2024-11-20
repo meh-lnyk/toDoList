@@ -13,13 +13,13 @@ public class ToDo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private boolean completed;
+    private boolean isCompleted;
     
     public ToDo(){}
 
-    public ToDo(String title, boolean completed) {
+    public ToDo(String title, boolean isCompleted) {
         this.title = title;
-        this.completed = completed;
+        this.isCompleted = isCompleted;
     }
 
     public Long getId() {
@@ -39,10 +39,10 @@ public class ToDo {
     }
 
     public boolean isCompleted() {
-        return completed;
+        return isCompleted;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    public void setCompleted(boolean isCompleted) {
+        this.isCompleted = isCompleted;
     }
 }
