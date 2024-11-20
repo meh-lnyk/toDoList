@@ -1,7 +1,7 @@
 async function fetchToDos() {
     console.log('fetchToDos() is called')
     try {
-        const response = await fetch('/todos', { method: 'GET' });
+        const response = await fetch('http://localhost:8080/todos', { method: 'GET' });
         if (response.ok) {
             const todos = await response.json();
             console.log("Fetched todos:", todos); // Log to inspect the data structure
@@ -67,7 +67,6 @@ function loadTodos(todos = []) {
         todoCompletionCheckbox.checked = todo.isCompleted;
         todoCompletionCheckbox.addEventListener('change', () => toggleCompletion(todo.id, todoCompletionCheckbox.checked));
 
-
         todoItem.appendChild(deleteToDoButton);
         todoItem.appendChild(todoCompletionCheckbox);
         todoList.appendChild(todoItem);
@@ -91,12 +90,12 @@ function deleteToDo(id) {
 
 function toggleCompletion(id, isCompleted) {
     console.log('toggleCompleted() is called')
-    fetch(`http://localhost:8080/todos/${id}/complete?completed=${isCompleted}`, {
+    fetch(`http://localhost:8080/todos/${id}/complete?is_completed=${isCompleted}`, {
         method: 'PATCH'
     })
     .then(response => {
         if (response.ok) {
-            fetchToDos(); // Refresh the to-dos after successful update
+            fetchToDos();
         } else {
             throw new Error('Failed to update completion status.');
         }

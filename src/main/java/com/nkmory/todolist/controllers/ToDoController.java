@@ -53,11 +53,11 @@ public class ToDoController {
     }
 
     @PatchMapping("/{id}/complete")
-    public ResponseEntity<ToDo> updateCompletionStatus(@PathVariable Long id, @RequestParam boolean completed) {
+    public ResponseEntity<ToDo> updateCompletionStatus(@PathVariable Long id, @RequestParam boolean is_completed) {
         Optional<ToDo> todoOptional = todoService.getToDoById(id);
         if (todoOptional.isPresent()) {
             ToDo todo = todoOptional.get();
-            todo.setCompleted(completed);
+            todo.setCompleted(is_completed);
             todoService.saveToDo(todo);
             return ResponseEntity.ok(todo);
         } else {
