@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.nkmory.todolist.TodolistApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-15T09:57:03" hostname="FILLEDWITHDETER" time="0.744">
+<testsuite name="com.nkmory.todolist.TodolistApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-19T09:05:38" hostname="FILLEDWITHDETER" time="0.646">
   <properties/>
-  <testcase name="contextLoads()" classname="com.nkmory.todolist.TodolistApplicationTests" time="0.744"/>
-  <system-out><![CDATA[12:56:57.088 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.nkmory.todolist.TodolistApplicationTests]: TodolistApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-12:56:57.284 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.nkmory.todolist.TodolistApplication for test class com.nkmory.todolist.TodolistApplicationTests
+  <testcase name="contextLoads()" classname="com.nkmory.todolist.TodolistApplicationTests" time="0.646"/>
+  <system-out><![CDATA[12:05:28.953 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.nkmory.todolist.TodolistApplicationTests]: TodolistApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:05:29.122 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.nkmory.todolist.TodolistApplication for test class com.nkmory.todolist.TodolistApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,45 +14,36 @@
 
  :: Spring Boot ::                (v3.3.5)
 
-2024-11-15T12:56:57.853+03:00  INFO 21240 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : Starting TodolistApplicationTests using Java 17.0.13 with PID 21240 (started by Nika Kurafeeva in C:\Users\Nika Kurafeeva\Documents\GitHub\toDoList)
-2024-11-15T12:56:57.856+03:00  INFO 21240 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : No active profile set, falling back to 1 default profile: "default"
-2024-11-15T12:56:58.623+03:00  INFO 21240 --- [todolist] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-15T12:56:58.667+03:00  INFO 21240 --- [todolist] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 1 JPA repository interface.
-2024-11-15T12:56:59.586+03:00  INFO 21240 --- [todolist] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-15T12:56:59.902+03:00  INFO 21240 --- [todolist] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4a62062a
-2024-11-15T12:56:59.906+03:00  INFO 21240 --- [todolist] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-15T12:57:00.660+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.changelog                      : Reading from todolist.databasechangelog
-2024-11-15T12:57:00.716+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.ui                             : Database is up to date, no changesets to execute
-2024-11-15T12:57:00.721+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.changelog                      : Reading from todolist.databasechangelog
-2024-11-15T12:57:00.734+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.util                           : UPDATE SUMMARY
-2024-11-15T12:57:00.734+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.util                           : Run:                          0
-2024-11-15T12:57:00.734+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.util                           : Previously run:               1
-2024-11-15T12:57:00.734+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.util                           : Filtered out:                 0
-2024-11-15T12:57:00.734+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.util                           : -------------------------------
-2024-11-15T12:57:00.734+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.util                           : Total change sets:            1
-2024-11-15T12:57:00.736+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.util                           : Update summary generated
-2024-11-15T12:57:00.776+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.lockservice                    : Successfully released change log lock
-2024-11-15T12:57:00.779+03:00  INFO 21240 --- [todolist] [    Test worker] liquibase.command                        : Command execution complete
-2024-11-15T12:57:00.906+03:00  INFO 21240 --- [todolist] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-15T12:57:00.980+03:00  INFO 21240 --- [todolist] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-11-15T12:57:01.044+03:00  INFO 21240 --- [todolist] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-15T12:57:01.437+03:00  INFO 21240 --- [todolist] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-15T12:57:01.490+03:00  WARN 21240 --- [todolist] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-15T12:57:01.491+03:00  WARN 21240 --- [todolist] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-11-15T12:57:02.286+03:00  INFO 21240 --- [todolist] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-Hibernate: 
-    drop table if exists todos
-Hibernate: 
-    create table todos (
-        completed bit not null,
-        id bigint not null auto_increment,
-        title varchar(255),
-        primary key (id)
-    ) engine=InnoDB
-2024-11-15T12:57:02.494+03:00  INFO 21240 --- [todolist] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-15T12:57:03.105+03:00  WARN 21240 --- [todolist] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-15T12:57:03.135+03:00  INFO 21240 --- [todolist] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2024-11-15T12:57:03.664+03:00  INFO 21240 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : Started TodolistApplicationTests in 6.133 seconds (process running for 7.817)
+2024-11-19T12:05:29.683+03:00  INFO 13044 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : Starting TodolistApplicationTests using Java 17.0.13 with PID 13044 (started by Nika Kurafeeva in C:\Users\Nika Kurafeeva\Documents\GitHub\toDoList)
+2024-11-19T12:05:29.684+03:00  INFO 13044 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2024-11-19T12:05:30.478+03:00  INFO 13044 --- [todolist] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-19T12:05:30.521+03:00  INFO 13044 --- [todolist] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 1 JPA repository interface.
+2024-11-19T12:05:32.086+03:00  INFO 13044 --- [todolist] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-19T12:05:34.002+03:00  INFO 13044 --- [todolist] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@48bc2fce
+2024-11-19T12:05:34.004+03:00  INFO 13044 --- [todolist] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-19T12:05:35.072+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.changelog                      : Reading from todolist.databasechangelog
+2024-11-19T12:05:35.140+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.ui                             : Database is up to date, no changesets to execute
+2024-11-19T12:05:35.144+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.changelog                      : Reading from todolist.databasechangelog
+2024-11-19T12:05:35.158+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.util                           : UPDATE SUMMARY
+2024-11-19T12:05:35.158+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.util                           : Run:                          0
+2024-11-19T12:05:35.158+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.util                           : Previously run:               2
+2024-11-19T12:05:35.158+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.util                           : Filtered out:                 0
+2024-11-19T12:05:35.158+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.util                           : -------------------------------
+2024-11-19T12:05:35.158+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.util                           : Total change sets:            2
+2024-11-19T12:05:35.160+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.util                           : Update summary generated
+2024-11-19T12:05:35.191+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.lockservice                    : Successfully released change log lock
+2024-11-19T12:05:35.194+03:00  INFO 13044 --- [todolist] [    Test worker] liquibase.command                        : Command execution complete
+2024-11-19T12:05:35.339+03:00  INFO 13044 --- [todolist] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-19T12:05:35.419+03:00  INFO 13044 --- [todolist] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-19T12:05:35.474+03:00  INFO 13044 --- [todolist] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-19T12:05:36.004+03:00  INFO 13044 --- [todolist] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-19T12:05:36.070+03:00  WARN 13044 --- [todolist] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-19T12:05:36.072+03:00  WARN 13044 --- [todolist] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-19T12:05:37.018+03:00  INFO 13044 --- [todolist] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-19T12:05:37.021+03:00  INFO 13044 --- [todolist] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-19T12:05:37.517+03:00  WARN 13044 --- [todolist] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-19T12:05:37.548+03:00  INFO 13044 --- [todolist] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-11-19T12:05:38.097+03:00  INFO 13044 --- [todolist] [    Test worker] c.n.todolist.TodolistApplicationTests    : Started TodolistApplicationTests in 8.742 seconds (process running for 10.769)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -13,17 +13,6 @@ async function fetchToDos() {
     }
 }
 
-function loadTodos(todos = []) {
-    const todoList = document.getElementById('todoList');
-    todoList.innerHTML = ''; // Clear the list
-
-    todos.forEach(todo => {
-        const listItem = document.createElement('li');
-        listItem.textContent = todo.title; // Display the todo title
-        todoList.appendChild(listItem);
-    });
-}
-
 function addToDo() {
     const todoTitle = document.getElementById('todoTitle').value;
 
@@ -57,7 +46,40 @@ function addToDo() {
     });
 }
 
-// Call loadTodos() initially to load the todos when the page loads
+function loadTodos(todos = []) {
+    const todoList = document.getElementById('todoList');
+    todoList.innerHTML = ''; // Clear the list
+
+    todos.forEach(todo => {
+        const todoItem = document.createElement('li');
+        todoItem.textContent = todo.title; // Display the todo title
+
+        const deleteToDoButton = document.createElement('button');
+        deleteToDoButton.textContent = 'X';
+        deleteToDoButton.classList.add('delete-td-btn'); // For styling
+        deleteToDoButton.onclick = () => deleteToDo(todo.id);
+
+        todoItem.appendChild(deleteToDoButton);
+        todoList.appendChild(todoItem);
+    });
+}
+
+function deleteToDo(id) {
+    fetch(`http://localhost:8080/todos/${id}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to delete todo.');
+        }
+        fetchToDos();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    })
+}
+
+// Call fetchToDos() initially to load the todos when the page loads
 window.onload = function() {
     fetchToDos()
 };

@@ -1,0 +1,8 @@
+.delete-td-btn {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
