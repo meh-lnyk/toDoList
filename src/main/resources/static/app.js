@@ -1,7 +1,7 @@
 async function fetchToDos() {
     console.log('fetchToDos() is called')
     try {
-        const response = await fetch('http://localhost:8080/todos', { method: 'GET' });
+        const response = await fetch('http://localhost:8080/todolist', { method: 'GET' });
         if (response.ok) {
             const todos = await response.json();
             console.log("Fetched todos:", todos); // Log to inspect the data structure
@@ -22,7 +22,7 @@ function addToDo() {
         return;
     }
 
-    fetch('http://localhost:8080/todos', {
+    fetch('http://localhost:8080/todolist', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ function loadTodos(todos = []) {
 }
 
 function deleteToDo(id) {
-    fetch(`http://localhost:8080/todos/${id}`, {
+    fetch(`http://localhost:8080/todolist/${id}`, {
         method: 'DELETE'
     })
     .then(response => {
@@ -90,11 +90,13 @@ function deleteToDo(id) {
 
 function toggleCompletion(id, isCompleted) {
     console.log('toggleCompleted() is called')
-    fetch(`http://localhost:8080/todos/${id}/complete?is_completed=${isCompleted}`, {
+    fetch(`http://localhost:8080/todolist/${id}/complete?is_completed=${isCompleted}`, {
         method: 'PATCH'
     })
     .then(response => {
         if (response.ok) {
+            console.log('toggleCompleted() is ok')
+            console.log('isCompleted:', isCompleted);
             fetchToDos();
         } else {
             throw new Error('Failed to update completion status.');

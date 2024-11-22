@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: adding_new_task
+      id: adding_new_todo
       author: nkmory
       changes:
         - insert:

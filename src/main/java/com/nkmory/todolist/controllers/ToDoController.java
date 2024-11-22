@@ -1,6 +1,8 @@
 //Even though it shows an error do NOT delete it
 package com.nkmory.todolist.controllers;
 
+import java.util.Arrays;
+
 import com.nkmory.todolist.models.ToDo;
 import com.nkmory.todolist.services.ToDoService;
 
@@ -21,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-// @CrossOrigin(origins = "http://localhost:8080/todos")
+import jakarta.annotation.PostConstruct;
+
+// @CrossOrigin(origins = "http://localhost:8080/todolist")
 @RestController
-@RequestMapping("/todos")
+@RequestMapping("/todolist")
 public class ToDoController {
 
     private final ToDoService todoService;
@@ -63,5 +67,10 @@ public class ToDoController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @PostConstruct
+    public void logEntityMappings() {
+        System.out.println("Mapped column: " + Arrays.toString(this.getClass().getDeclaredFields()));
     }
 }

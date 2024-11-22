@@ -12,8 +12,8 @@ public class SecurityConfig {
         http
             .csrf().disable() // Disable CSRF for testing, enable in production
             .authorizeRequests()
-            .requestMatchers(HttpMethod.GET, "/todos/**").permitAll()  // Allow GET requests
-            .requestMatchers(HttpMethod.POST, "/todos/**").permitAll() // Allow POST requests
+            .requestMatchers(HttpMethod.GET, "/todolist/**").permitAll()  // Allow GET requests
+            .requestMatchers(HttpMethod.POST, "/todolist/**").permitAll() // Allow POST requests
             .anyRequest().authenticated();
         return http.build();
     }
