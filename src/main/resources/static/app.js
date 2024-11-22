@@ -35,12 +35,8 @@ function addToDo() {
         }
         return response.json();
     })
-    .then(data => {
-        const todoList = document.getElementById('todoList');
-        const todoItem = document.createElement('li');
-        todoItem.textContent = data.title;
-        todoList.appendChild(todoItem);  
-        return fetchToDos();
+    .then(() => {
+        fetchToDos();
     })
     .catch(error => {
         console.error('Error:', error)
