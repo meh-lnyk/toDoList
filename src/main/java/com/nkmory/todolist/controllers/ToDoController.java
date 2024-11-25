@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.annotation.PostConstruct;
@@ -57,11 +56,14 @@ public class ToDoController {
     }
 
     @PatchMapping("/{id}/complete")
-    public ResponseEntity<ToDo> updateCompletionStatus(@PathVariable Long id, @RequestParam boolean is_completed) {
+    public ResponseEntity<ToDo> updateCompletionStatus(@PathVariable Long id, @RequestBody Map<String, Boolean> requestBody) {
+        // Extract the "is_completed" value from the JSON body
+        Boolean isCompleted = requestBody.get("is_completed");
+        
         Optional<ToDo> todoOptional = todoService.getToDoById(id);
         if (todoOptional.isPresent()) {
             ToDo todo = todoOptional.get();
-            todo.setCompleted(is_completed);
+            todo.setCompleted(isCompleted);
             todoService.saveToDo(todo);
             return ResponseEntity.ok(todo);
         } else {
