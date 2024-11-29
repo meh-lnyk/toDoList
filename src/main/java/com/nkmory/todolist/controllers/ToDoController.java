@@ -1,4 +1,3 @@
-//Even though it shows an error do NOT delete it
 package com.nkmory.todolist.controllers;
 
 import java.util.Arrays;
@@ -24,14 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.annotation.PostConstruct;
 
-// @CrossOrigin(origins = "http://localhost:8080/todolist")
 @RestController
 @RequestMapping("/todolist")
 public class ToDoController {
 
     private final ToDoService todoService;
 
-    // Inject the ToDoService into the controller
+    // Injecting the ToDoService into the controller
     @Autowired
     public ToDoController(ToDoService todoService) {
         this.todoService = todoService;
@@ -57,7 +55,7 @@ public class ToDoController {
 
     @PatchMapping("/{id}/complete")
     public ResponseEntity<ToDo> updateCompletionStatus(@PathVariable Long id, @RequestBody Map<String, Boolean> requestBody) {
-        // Extract the "is_completed" value from the JSON body
+        // Extracting the "is_completed" value from the JSON body
         Boolean isCompleted = requestBody.get("is_completed");
         
         Optional<ToDo> todoOptional = todoService.getToDoById(id);

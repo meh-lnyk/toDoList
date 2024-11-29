@@ -1,17 +1,30 @@
-async function fetchToDos() {
-    console.log('fetchToDos() is called')
-    try {
-        const response = await fetch('http://localhost:8080/todolist', { method: 'GET' });
-        if (response.ok) {
-            const todos = await response.json();
-            console.log("Fetched todos:", todos); // Log to inspect the data structure
-            loadTodos(todos); // Pass the todos to loadTodos for rendering
-        } else {
-            console.error('Failed to fetch todos');
-        }
-    } catch (error) {
-        console.error('Error loading todos:', error);
-    }
+function fetchToDos() {
+    fetch('http://localhost:8080/todolist')
+        .then(response => response.json())
+        .then(todos => {
+            const todoList = document.getElementById('todoList');
+            todoList.innerHTML = ''; // Clearing the list
+
+            todos.forEach(todo => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <input 
+                        type="checkbox" 
+                        class="todo-checkbox" 
+                        data-todo-id="${todo.id}" 
+                        ${todo.completed ? 'checked' : ''}
+                        onchange="handleCheckboxChange(this)"
+                    >
+                    ${todo.title}
+                `;
+                todoList.appendChild(listItem);
+            });
+            console.log('Fetched ToDos:', todos);
+            loadTodos(todos);
+        })
+        .catch(error => {
+            console.error('Error fetching todos:', error);
+        });
 }
 
 function addToDo() {
@@ -45,26 +58,30 @@ function addToDo() {
 
 function loadTodos(todos = []) {
     console.log('loadTodos() is called');
-    console.log(todos);
     const todoList = document.getElementById('todoList');
-    todoList.innerHTML = ''; // Clear the list
+    todoList.innerHTML = ''; // Clearing the list
 
     todos.forEach(todo => {
         const todoItem = document.createElement('li');
-        todoItem.textContent = todo.title; // Display the todo title
+
+        const todoCompletionCheckbox = document.createElement('input');
+        todoCompletionCheckbox.type = 'checkbox';
+        todoCompletionCheckbox.checked = todo.completed;
+        todoCompletionCheckbox.dataset.todoId = todo.id; // Storing the ID in a data attribute
+        todoCompletionCheckbox.addEventListener('change', () => handleCheckboxChange(todoCompletionCheckbox));
+
+        // Displaying the todo title
+        const todoTitle = document.createTextNode(todo.title);
 
         const deleteToDoButton = document.createElement('button');
         deleteToDoButton.textContent = 'X';
         deleteToDoButton.classList.add('delete-td-btn'); // For styling
         deleteToDoButton.onclick = () => deleteToDo(todo.id);
 
-        const todoCompletionCheckbox = document.createElement('input');
-        todoCompletionCheckbox.type = 'checkbox';
-        todoCompletionCheckbox.checked = todo.isCompleted;
-        todoCompletionCheckbox.addEventListener('change', () => toggleCompletion(todo.id, todoCompletionCheckbox.checked));
-
-        todoItem.appendChild(deleteToDoButton);
         todoItem.appendChild(todoCompletionCheckbox);
+        todoItem.appendChild(todoTitle);
+        todoItem.appendChild(deleteToDoButton);
+
         todoList.appendChild(todoItem);
     });
 }
@@ -85,14 +102,17 @@ function deleteToDo(id) {
 }
 
 function toggleCompletion(id, isCompleted) {
-    console.log('toggleCompleted() is called')
-    fetch(`http://localhost:8080/todolist/${id}/complete?is_completed=${isCompleted}`, {
-        method: 'PATCH'
+    console.log('toggleCompletion() is called');
+    fetch(`http://localhost:8080/todolist/${id}/complete`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ is_completed: isCompleted }), // Sending the flag in the request body
     })
     .then(response => {
         if (response.ok) {
-            console.log('toggleCompleted() is ok')
-            console.log('isCompleted:', isCompleted);
+            console.log('toggleCompletion() is successful');
             fetchToDos();
         } else {
             throw new Error('Failed to update completion status.');
@@ -103,7 +123,13 @@ function toggleCompletion(id, isCompleted) {
     });
 }
 
-// Call fetchToDos() initially to load the todos when the page loads
+function handleCheckboxChange(checkbox) {
+    const todoId = checkbox.dataset.todoId; // Reading todo ID from data attribute
+    const isCompleted = checkbox.checked;  // Checkbox state (checked/unchecked)
+    toggleCompletion(todoId, isCompleted);
+}
+
+// Calling fetchToDos() initially to load the todos when the page loads
 window.onload = function() {
     fetchToDos()
 };
