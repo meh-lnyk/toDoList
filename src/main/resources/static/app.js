@@ -73,6 +73,11 @@ function loadTodos(todos = []) {
         // Displaying the todo title
         const todoTitle = document.createTextNode(todo.title);
 
+        if (todo.isCompleted) {
+            todoItem.classList.add('completed');
+            console.log('added completed class');
+        }
+
         const deleteToDoButton = document.createElement('button');
         deleteToDoButton.textContent = 'X';
         deleteToDoButton.classList.add('delete-td-btn'); // For styling
