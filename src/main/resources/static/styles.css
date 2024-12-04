@@ -22,8 +22,16 @@ h1 {
     color: #4CAF50;
 }
 
+#inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
 input#todoTitle {
-    width: 300px;
+    flex-grow: 1;
+    width: auto;
     padding: 10px;
     margin: 10px 0;
     border: 2px solid #ddd;
