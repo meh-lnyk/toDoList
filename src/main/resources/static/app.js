@@ -57,7 +57,7 @@ function addToDo() {
 }
 
 function loadTodos(todos = []) {
-    console.log('loadTodos() is called');
+    console.log('Loading todos...');
     const todoList = document.getElementById('todoList');
     todoList.innerHTML = ''; // Clearing the list
 
@@ -107,7 +107,7 @@ function deleteToDo(id) {
 }
 
 function toggleCompletion(id, isCompleted) {
-    console.log('toggleCompletion() is called');
+    console.log('Toggling completion...');
     fetch(`http://localhost:8080/todolist/${id}/complete`, {
         method: 'PATCH',
         headers: {
@@ -117,7 +117,7 @@ function toggleCompletion(id, isCompleted) {
     })
     .then(response => {
         if (response.ok) {
-            console.log('toggleCompletion() is successful');
+            console.log('Completion toggled succesfully');
             fetchToDos();
         } else {
             throw new Error('Failed to update completion status.');
