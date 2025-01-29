@@ -27,8 +27,4 @@ replay_pid*
 build/
 .gradle/
 
-.vs\
-build\
-.gradle\
-
 .env

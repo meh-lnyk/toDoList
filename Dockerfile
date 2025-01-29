@@ -25,7 +25,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the built JAR from the build stage
-COPY --from=build /app/build/libs/*.jar app.jar
+COPY --from=build /app/build/libs/todolist-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the app's port
 EXPOSE 8080
