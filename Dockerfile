@@ -3,8 +3,9 @@ FROM gradle:8.4-jdk17 AS build
 WORKDIR /app
 
 # Cache dependencies: Copy only essential Gradle files first
-COPY gradlew .
+COPY gradlew . 
 COPY gradle/ gradle/
+COPY gradle/wrapper/ gradle/wrapper/
 COPY build.gradle .
 COPY settings.gradle .
 
