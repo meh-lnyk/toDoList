@@ -1,5 +1,5 @@
 function fetchToDos() {
-    fetch('http://localhost:8080/todolist')
+    fetch('http://todo.meh-lnyk.site/todolist')
         .then(response => response.json())
         .then(todos => {
             const todoList = document.getElementById('todoList');
@@ -35,7 +35,7 @@ function addToDo() {
         return;
     }
 
-    fetch('http://localhost:8080/todolist', {
+    fetch('http://todo.meh-lnyk.site/todolist', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ function loadTodos(todos = []) {
 }
 
 function deleteToDo(id) {
-    fetch(`http://localhost:8080/todolist/${id}`, {
+    fetch(`http://todo.meh-lnyk.site/todolist/${id}`, {
         method: 'DELETE'
     })
     .then(response => {
@@ -108,7 +108,7 @@ function deleteToDo(id) {
 
 function toggleCompletion(id, isCompleted) {
     console.log('Toggling completion...');
-    fetch(`http://localhost:8080/todolist/${id}/complete`, {
+    fetch(`http://todo.meh-lnyk.site/todolist/${id}/complete`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
